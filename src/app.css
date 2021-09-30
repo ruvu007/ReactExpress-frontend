@@ -1,0 +1,27 @@
+.app {
+    margin: auto;
+    width: 50%;
+}
+
+.registration {
+    margin: auto;
+    width: 50%;
+}
+
+.login {
+    margin: auto;
+    width: 50%;
+}
+
+input {
+    width: 100%;
+}
+
+.foutmelding {
+    color: red;
+}
+
+.link {
+    width: 100%;
+    margin-bottom: 20px;
+}
