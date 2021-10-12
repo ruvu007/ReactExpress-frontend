@@ -3,13 +3,16 @@ import Axios from 'axios';
 
 function Registration() {
 
-  const [usernameReg, setUsernameReg] = useState('');
-  const [passwordReg, setPasswordReg] = useState('');
+    const [usernameReg, setUsernameReg] = useState('');
+    const [passwordReg, setPasswordReg] = useState('');
 
-  const register = () => {
-      Axios.post('http://localhost:3001/register', {
-          username: usernameReg, 
-          password: passwordReg
+    Axios.defaults.withCredentials = true;
+
+    // Axios post om de opgegeven data van de frontend naar de backend te sturen
+    const register = () => {
+        Axios.post('http://localhost:3001/register', {
+            username: usernameReg, 
+            password: passwordReg
         }).then((response) => {
             console.log(response);
         });

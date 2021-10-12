@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useEffect } from 'react/cjs/react.development';
 
 function Login() {
 
@@ -8,6 +9,9 @@ function Login() {
 
   const [loginStatus, setLoginStatus] = useState("");
 
+  Axios.defaults.withCredentials = true;
+
+  // Axios post om de opgegeven data van de frontend naar de backend te sturen
   const login = () => {
     Axios.post('http://localhost:3001/login', {
         username: username, 
@@ -21,6 +25,14 @@ function Login() {
         }
       });
   };
+
+  useEffect(() => {
+    Axios.get('http://localhost:3001/login').then((response) => {
+      if (response.data.loggedIn == true) {
+        setLoginStatus(response.data.user[0].username);
+      };
+    });
+  }, []);
 
   return (
     <div className='app'>
