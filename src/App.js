@@ -4,13 +4,10 @@ import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import './app.css';
 
 // Components
-
 import Registration from './components/Registration';
 import Login from './components/Login';
 
-
 // Pages
-
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 
