@@ -5,6 +5,7 @@ function Registration() {
 
     const [usernameReg, setUsernameReg] = useState('');
     const [passwordReg, setPasswordReg] = useState('');
+    const [roleReg, setRoleReg] = useState('');
 
     Axios.defaults.withCredentials = true;
 
@@ -12,7 +13,8 @@ function Registration() {
     const register = () => {
         Axios.post('http://localhost:3001/register', {
             username: usernameReg, 
-            password: passwordReg
+            password: passwordReg,
+            role: roleReg
         }).then((response) => {
             console.log(response);
         });
@@ -36,6 +38,16 @@ function Registration() {
                 {setPasswordReg(e.target.value)
             }} 
             />
+
+            <label>Gebruikers rol</label>
+            <select
+                onChange={(e) => 
+                    {setRoleReg(e.target.value)
+                }}
+            >
+                <option name='investor'>investeerder</option>
+                <option name='broker'>makelaar</option>
+            </select>
 
             <button onClick={register}>Registreer</button>
         </div>
