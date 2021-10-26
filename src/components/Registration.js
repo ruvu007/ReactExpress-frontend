@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './userValidation';
+
 function Registration() {
 
     const [usernameReg, setUsernameReg] = useState('');
@@ -9,8 +13,12 @@ function Registration() {
 
     Axios.defaults.withCredentials = true;
 
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+      });
+
     // Axios post om de opgegeven data van de frontend naar de backend te sturen
-    const register = () => {
+    const submitForm = () => {
         Axios.post('http://localhost:3001/register', {
             username: usernameReg, 
             password: passwordReg,
@@ -22,22 +30,40 @@ function Registration() {
 
   return (
     <div className='app'>
-        <div className='registration'>
+        <form onSubmit={handleSubmit(submitForm)} className='registration'>
             <h1>Registratie</h1>
 
             <label>Emailadres</label>
-            <input type='text' 
+            <input 
+            type='text'
+            name='username'
+            {...register('username')}
+
             onChange={(e) => 
                 {setUsernameReg(e.target.value)
             }} 
             />
+            <p>{errors.username?.message}</p>
 
             <label>Wachtwoord</label>
-            <input type='password' 
+            <input 
+            type='password'
+            name='password'
+            {...register('password')}
+            
             onChange={(e) => 
                 {setPasswordReg(e.target.value)
             }} 
             />
+            <p>{errors.password?.message}</p>
+
+            <label>Bevestig wachtwoord</label>
+            <input 
+            type='password' 
+            name='confirmPassword'
+            {...register('confirmPassword')}
+            />
+            <p>{errors.confirmPassword?.message}</p>
 
             <label>Gebruikers rol</label>
             <select
@@ -49,8 +75,8 @@ function Registration() {
                 <option name='broker'>makelaar</option>
             </select>
 
-            <button onClick={register}>Registreer</button>
-        </div>
+            <button>Registreer</button>
+        </form>
     </div>
   );
 }
