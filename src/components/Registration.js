@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './userValidation';
 
+import PasswordMeter from './passwordMeter';
+
 function Registration() {
 
     const [usernameReg, setUsernameReg] = useState('');
@@ -43,7 +45,7 @@ function Registration() {
                 {setUsernameReg(e.target.value)
             }} 
             />
-            <p>{errors.username?.message}</p>
+            <p className='register-error'>{errors.username?.message}</p>
 
             <label>Wachtwoord</label>
             <input 
@@ -55,7 +57,8 @@ function Registration() {
                 {setPasswordReg(e.target.value)
             }} 
             />
-            <p>{errors.password?.message}</p>
+            <PasswordMeter password={ passwordReg }/>
+            <p className='register-error'>{errors.password?.message}</p>
 
             <label>Bevestig wachtwoord</label>
             <input 
@@ -63,7 +66,7 @@ function Registration() {
             name='confirmPassword'
             {...register('confirmPassword')}
             />
-            <p>{errors.confirmPassword?.message}</p>
+            <p className='register-error'>{errors.confirmPassword?.message}</p>
 
             <label>Gebruikers rol</label>
             <select

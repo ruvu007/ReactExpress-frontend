@@ -30,3 +30,23 @@ select {
     width: 100%;
     margin-bottom: 20px;
 }
+
+.progress {
+    margin-top: .2rem;
+    margin-left: 2px;
+    background-color: lightgray;
+}
+
+.progress-bar {
+    border-radius: 5px;
+}
+
+.progress-label {
+    float: right;
+    margin: 0;
+    font-size: 12px;
+}
+
+.register-error {
+    color: red;
+}
