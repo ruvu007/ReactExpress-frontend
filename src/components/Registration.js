@@ -13,6 +13,8 @@ function Registration() {
     const [passwordReg, setPasswordReg] = useState('');
     const [roleReg, setRoleReg] = useState('');
 
+    const [emailStatus, setEmailStatus] = useState("");
+
     Axios.defaults.withCredentials = true;
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -26,7 +28,9 @@ function Registration() {
             password: passwordReg,
             role: roleReg
         }).then((response) => {
-            console.log(response);
+            if (response.data.message) {
+                setEmailStatus(response.data.message);
+            }
         });
     };
 
@@ -46,6 +50,7 @@ function Registration() {
             }} 
             />
             <p className='register-error'>{errors.username?.message}</p>
+            <p className='foutmelding'>{emailStatus}</p>
 
             <label>Wachtwoord</label>
             <input 
