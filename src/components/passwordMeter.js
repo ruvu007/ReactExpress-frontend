@@ -8,15 +8,15 @@ function passwordMeter({ password }) {
     const createPassLabel = () => {
         switch(testResult.score) {
             case 0:
-              return 'Very weak';
+              return 'Heel zwak';
             case 1:
-              return 'Weak';
+              return 'Zwak';
             case 2:
-              return 'Fear';
+              return 'Middel';
             case 3:
-              return 'Good';
+              return 'Sterk';
             case 4:
-              return 'Strong';
+              return 'Zeer sterk';
             default:
               return '';
         }
