@@ -7,7 +7,11 @@ function Home() {
         <h1>Homepagina</h1>
 
         <div className='link'>
-           <Link to="/registreer">Registreren</Link> 
+           <Link to="/registreer/makelaar">Registratie makelaar</Link> 
+        </div>
+
+        <div className='link'>
+           <Link to="/registreer/investeerder">Registratie investeerder</Link> 
         </div>
         
         <div className='link'>

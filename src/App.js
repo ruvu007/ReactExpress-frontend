@@ -4,7 +4,8 @@ import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import './app.css';
 
 // Components
-import Registration from './components/Registration';
+import brokerRegistration from './components/brokerRegistration';
+import investorRegistration from './components/investorRegistration';
 import Login from './components/Login';
 
 // Pages
@@ -17,7 +18,8 @@ function App() {
       <Switch>
       <Route path="/" exact component={Home}></Route>
 
-      <Route path="/registreer" component={Registration}></Route>
+      <Route path="/registreer/makelaar" component={brokerRegistration}></Route>
+      <Route path="/registreer/investeerder" component={investorRegistration}></Route>
 
       <Route path="/login" component={Login}></Route>
 
