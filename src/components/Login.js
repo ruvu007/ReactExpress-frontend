@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { useEffect } from 'react/cjs/react.development';
 
+import { useHistory } from "react-router-dom";
+
 function Login() {
+
+  const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -18,10 +22,10 @@ function Login() {
         password: password
       }).then((response) => {
 
-        if (response.data.message) {
+        if (!response.data.auth) {
             setLoginStatus(response.data.message);
         } else {
-            setLoginStatus(response.data[0].username);
+            history.push("/dashboard");
         }
     });
   };
@@ -30,6 +34,7 @@ function Login() {
     Axios.get('http://localhost:3001/login').then((response) => {
       if (response.data.loggedIn === true) {
         setLoginStatus(response.data.user[0].username);
+        history.push("/dashboard");
       };
     });
   }, []);
