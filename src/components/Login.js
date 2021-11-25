@@ -21,7 +21,7 @@ function Login() {
         username: username, 
         password: password
       }).then((response) => {
-        if (!response.data.auth) {
+        if (!response.data.loggedIn) {
             setLoginStatus(response.data.message);
         } else {
             history.push("/dashboard");
@@ -32,7 +32,6 @@ function Login() {
   useEffect(() => {
     Axios.get('http://localhost:3001/login').then((response) => {
       if (response.data.loggedIn === true) {
-        setLoginStatus(response.data.user[0].username);
         history.push("/dashboard");
       };
     });
