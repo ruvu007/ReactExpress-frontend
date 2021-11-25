@@ -50,3 +50,7 @@ select {
 .register-error {
     color: red;
 }
+
+h5 {
+    margin: 0;
+}

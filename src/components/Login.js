@@ -21,7 +21,6 @@ function Login() {
         username: username, 
         password: password
       }).then((response) => {
-
         if (!response.data.auth) {
             setLoginStatus(response.data.message);
         } else {
@@ -37,7 +36,7 @@ function Login() {
         history.push("/dashboard");
       };
     });
-  }, []);
+  }, [history]);
 
   return (
     <div className='app'>
