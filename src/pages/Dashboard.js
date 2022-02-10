@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
+// Components
+import EditEmployees from '../components/employee/employeeEdit';
+
 import { useHistory } from "react-router-dom";
 
 function Dashboard() {
@@ -60,6 +63,10 @@ function Dashboard() {
 
         <h5>{ housenumber }, { zip }</h5>
         <h5>{ country }</h5>
+
+        <div className='editemployees'>
+          <EditEmployees />
+        </div>
     </div>
   );
 }

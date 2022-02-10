@@ -17,6 +17,10 @@ function Home() {
         <div className='link'>
            <Link to="/login">Login</Link> 
         </div>
+
+        <div className='link'>
+           <Link to="/werknemer/login">Login voor werknemers</Link> 
+        </div>
         
     </div>
   );
